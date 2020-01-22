@@ -33,6 +33,8 @@ app.use(cookieParser());
 //use modular routes
 
 //app.use("/api", require("../routes/api"));
+
+app.use('/api', require('../routes'));
 app.use("/*", (req, res) =>
   res.sendFile(path.join(__dirname, "../dist", "index.html"))
 );

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import store from "../store";
-
+import NavbarContainer from "./NavbarContainer";
+import HomeContainer from "./HomeContainer"
+import ServicesContainer from "./ServicesContainer"
 
 export default class Main extends Component{
     constructor(props){
@@ -11,8 +13,15 @@ export default class Main extends Component{
     render(){
         return (
             <div>
-                <h1>Hola a todos</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt deleniti temporibus laborum quam quo autem reprehenderit esse vero officia. Provident commodi autem repudiandae recusandae totam aperiam velit quisquam sint voluptate.</p>
+                <NavbarContainer history={this.props.history}/>
+                <Switch>
+                    <Route exact path="/"
+                        component={HomeContainer}
+                        />
+                    <Route exact path="/search"
+                        component={ServicesContainer}
+                        />
+                </Switch>
             </div>
         )
     }
