@@ -16,7 +16,11 @@ User.init(
         password: {
             type: S.STRING,
             allowNull: false
+        },
+        salt: {
+            type: S.STRING,
         }
     },{sequelize: db, modelName: "user"})
 
+  
 module.exports = User

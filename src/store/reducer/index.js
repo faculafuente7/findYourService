@@ -1,13 +1,16 @@
-import { SEARCH_SERVICES } from '../constants'
+import { SEARCH_SERVICES, RECEIVE_USER } from '../constants'
 
 const initialState = {
-    services: []
+    services: [],
+    user: {}
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case SEARCH_SERVICES:
             return Object.assign({}, state, { services: action.payload });
+        case RECEIVE_USER:
+            return Object.assign({}, state, { user: action.payload });
         default:
             return state;
     }

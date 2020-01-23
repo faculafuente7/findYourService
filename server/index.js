@@ -24,8 +24,12 @@ app.use(express.static(DIST_DIR));
 app.use(
   session({ secret: "findYourService", resave: true, saveUninitialized: true })
 );
+
+/**** PASSPORT */
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
