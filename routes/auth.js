@@ -13,15 +13,13 @@ router.post('/register', (req,res) => {
         password: req.body.inputPassword
     }
     User.findOrCreate({where: user })
-    .then(data => {
-      console.log(data[0].dataValues)
-      res.sendStatus(201).send(data[0].dataValues)
+    .then(() => {
+      res.sendStatus(201)
     });
 
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-    console.log(req.body)
     res.send(req.body);
   });
 

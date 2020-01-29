@@ -5,7 +5,8 @@ import LoginContainer from '../containers/LoginContainer'
 
 
 
-function NavbarComponent({ handleInput, handleSubmit, history }) {
+function NavbarComponent({ handleInput, handleSubmit, logout, history, user }) {
+  console.log(user)
   return (
     <Navbar bg="dark" variant="dark">
       <Link to="/" >
@@ -15,9 +16,16 @@ function NavbarComponent({ handleInput, handleSubmit, history }) {
         <FormControl onChange={handleInput} type="text" placeholder="Search" className="mr-sm-2" />
         <Button onClick={handleSubmit} variant="outline-info">Search</Button>
       </Form>
-      <Nav className="mr-auto">
-        <LoginContainer history={history}/>
-      </Nav>
+      {user.inputEmail || user.email ? (
+        <Nav>
+          <Button onClick={logout} variant="dark" >Logout</Button>
+          <Link className="navbar-brand" to="/admin">{user.inputEmail || user.email }</Link>
+        </Nav>
+      ) : (
+          <Nav className="mr-auto">
+            <LoginContainer history={history} />
+          </Nav>
+        )}
     </Navbar>
   )
 }

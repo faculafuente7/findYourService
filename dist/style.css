@@ -3,3 +3,19 @@ body{
     background: -webkit-linear-gradient(to right, #2193b0, #6dd5ed); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2193b0, #6dd5ed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.adminTable{
+    margin-top: 30px;
+    width: 80%;
+}
+
+.container{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.service-card{
+    width: 200px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}

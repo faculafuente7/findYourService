@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Jumbotron } from 'react-bootstrap'
-import { connect } from 'react-redux'
+
 
 
 function HomeComponent() {
@@ -18,8 +18,5 @@ function HomeComponent() {
     )
 }
 
-const mapStateToProps = state => { };
 
-const mapDispatchToProps = dispatch => { }
-
-export default connect(null, null)(HomeComponent);
+export default HomeComponent;

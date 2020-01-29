@@ -1,2 +1,3 @@
 export const SEARCH_SERVICES = "SEARCH_SERVICES";
 export const RECEIVE_USER = "RECEIVE_USER";
+export const LOGOUT_USER = "LOGOUT_USER";

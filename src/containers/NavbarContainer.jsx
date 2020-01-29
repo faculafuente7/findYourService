@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { searchServices } from '../store/actions/services'
-import { useDispatch } from "redux"
 import NavbarComponent from '../components/NavbarComponent'
+import { logoutUser } from '../store/actions/users'
+import Axios from "axios";
+
 
 
 class NavbarContainer extends React.Component {
@@ -13,6 +15,7 @@ class NavbarContainer extends React.Component {
         };
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.logout = this.logout.bind(this)
     }
 
     handleInput(evt) {
@@ -26,21 +29,37 @@ class NavbarContainer extends React.Component {
         this.props.history.push('/search');
     }
 
+    logout() {
+        Axios.get('/api/auth/logout')
+            .then(() => {
+                this.props.logoutUser()
+                this.props.history.push('/')
+            })
+
+    }
+
     render() {
         return (
             <NavbarComponent
+                user={this.props.user}
                 history={this.props.history}
                 handleInput={this.handleInput}
                 handleSubmit={this.handleSubmit}
+                logout={this.logout}
             />
         )
 
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    searchServices: inputValue => dispatch(searchServices(inputValue))
+const mapStateToProps = state => ({
+    user: state.user
 })
 
-export default connect(null, mapDispatchToProps)(NavbarContainer)
+const mapDispatchToProps = dispatch => ({
+    searchServices: inputValue => dispatch(searchServices(inputValue)),
+    logoutUser: () => dispatch(logoutUser())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer)
 

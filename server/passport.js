@@ -11,7 +11,6 @@ passport.use(new LocalStrategy(
 
         User.findOne({ where: { email: inputEmail } })
             .then(user => {
-                console.log(user)
                 if (!user) {
                     return done(null, false, { message: 'Incorrect email.' });
                 }
